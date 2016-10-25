@@ -60,7 +60,7 @@ public class InputReaderTest {
     }
 
     @Test
-    public void test_read_position_error_cases(){
+    public void test_read_position_error_cases() {
         InputReader reader = new InputReader();
         Position position = reader.readPosition("");
         Assert.assertNull(position);
@@ -79,5 +79,39 @@ public class InputReaderTest {
     }
 
 
+    @Test
+    public void test_trainnee_movement_normal_case() {
+        InputReader reader = new InputReader();
+        List<Trainee> trainees = reader.createTrainees(getClass().getResourceAsStream("test_data.txt"));
+        Assert.assertEquals(2, trainees.size());
+        Trainee firstTrainee = trainees.get(0);
+        Assert.assertEquals(1, firstTrainee.getPosition().getX());
+        Assert.assertEquals(2, firstTrainee.getPosition().getY());
+        Assert.assertEquals(Orientation.NORTH, firstTrainee.getPosition().getOrientation());
+
+        Trainee secondTrainee = trainees.get(1);
+        Assert.assertEquals(3, secondTrainee.getPosition().getX());
+        Assert.assertEquals(3, secondTrainee.getPosition().getY());
+        Assert.assertEquals(Orientation.EAST, secondTrainee.getPosition().getOrientation());
+
+        firstTrainee.calibrate();
+        Assert.assertEquals(1, firstTrainee.getPosition().getX());
+        Assert.assertEquals(3, firstTrainee.getPosition().getY());
+        Assert.assertEquals(Orientation.NORTH, firstTrainee.getPosition().getOrientation());
+
+        secondTrainee.calibrate();
+        Assert.assertEquals(5, secondTrainee.getPosition().getX());
+        Assert.assertEquals(1, secondTrainee.getPosition().getY());
+        Assert.assertEquals(Orientation.EAST, secondTrainee.getPosition().getOrientation());
+
+    }
+
+    @Test
+    public void test_create_trainee_error_case() {
+        InputReader reader = new InputReader();
+        List<Trainee> trainees = reader.createTrainees(getClass().getResourceAsStream("error_data.txt"));
+        Assert.assertEquals(0, trainees.size());
+
+    }
 
 }

@@ -40,5 +40,10 @@ public class Position {
         return orientation;
     }
 
-
+    @Override
+    public String toString() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(x).append(" ").append(y).append(" ").append(orientation.getValue());
+        return buffer.toString();
+    }
 }

@@ -1,7 +1,7 @@
 package com.medibank;
 
-import javafx.geometry.Pos;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -57,4 +57,76 @@ public class InputReader {
         }
         return null;
     }
+
+    public List<Trainee> createTrainees(InputStream file) {
+        List<Trainee> trainees = new ArrayList<>();
+        try {
+            BufferedReader bReader = new BufferedReader(new InputStreamReader(file));
+            String line = bReader.readLine();
+            int maxX = 0, maxY = 0;
+            if (line != null) {
+                String[] split = line.split(SPACE);
+                if (split != null && split.length == 2) {
+                    maxX = Integer.parseInt(split[0]);
+                    maxY = Integer.parseInt(split[1]);
+                }
+            }
+            trainees = createTrainees(bReader, maxX, maxY);
+        } catch (FileNotFoundException e) {
+            LOGGER.severe(e.getMessage());
+        } catch (IOException e) {
+            LOGGER.severe(e.getMessage());
+        }
+        return trainees;
+    }
+
+
+    /**
+     * create trainee list from buffered read instance
+     *
+     * @param bReader the reader is used to read input from input stream
+     * @param maxX    the max x value of the grid system
+     * @param maxY    the max y value of the grid system
+     * @return Trainee list
+     * @throws IOException
+     */
+    private List<Trainee> createTrainees(BufferedReader bReader, int maxX, int maxY) throws IOException {
+        Trainee trainee = null;
+        List<Trainee> trainees = new ArrayList<>();
+        do {
+            trainee = createTraineeFromString(bReader, maxX, maxY);
+            if (trainee != null) {
+                trainees.add(trainee);
+            }
+        } while (trainee != null);
+        return trainees;
+    }
+
+    /**
+     * create trainnee instance from input string
+     *
+     * @param bReader the reader is used to read input from input stream
+     * @param maxX    the max x value of the grid system
+     * @param maxY    the max y value of the grid system
+     * @return Trainee object ; null if failed
+     * @throws IOException
+     */
+    private Trainee createTraineeFromString(BufferedReader bReader, int maxX, int maxY) throws IOException {
+        Trainee trainee = null;
+        String line = bReader.readLine();
+        Position position = null;
+        if (line != null) {
+            position = readPosition(line);
+        }
+        line = bReader.readLine();
+        List<Movement> movements = null;
+        if (line != null) {
+            movements = readMovement(line);
+        }
+        if (position != null && movements != null) {
+            trainee = new Trainee(position, movements, maxX, maxY);
+        }
+        return trainee;
+    }
+
 }
