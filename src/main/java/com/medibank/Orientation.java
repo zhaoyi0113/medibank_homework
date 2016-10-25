@@ -16,12 +16,29 @@ public enum Orientation {
         return value;
     }
 
+    /**
+     * create enum by the given shorthand string
+     *
+     * @param value the shorthand string for enum value
+     * @return the enum value; null if got invalid parameter
+     */
     public static Orientation getEnum(String value) {
-        for(Orientation v : values()){
-            if(v.getValue().equalsIgnoreCase(value)){
+        for (Orientation v : values()) {
+            if (v.getValue().equalsIgnoreCase(value)) {
                 return v;
             }
         }
-        throw new IllegalArgumentException("Invalid enum value "+value);
+        throw new IllegalArgumentException("Invalid enum value " + value);
+    }
+
+    public Orientation next() {
+        return values()[(this.ordinal() + 1) % values().length];
+    }
+
+    public Orientation previous(){
+        if(this.ordinal() == 0){
+            return values()[values().length-1];
+        }
+        return values()[(this.ordinal() - 1) % values().length];
     }
 }

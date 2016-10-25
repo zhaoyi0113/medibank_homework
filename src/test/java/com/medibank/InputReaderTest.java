@@ -50,6 +50,13 @@ public class InputReaderTest {
         Assert.assertEquals(0, position.getX());
         Assert.assertEquals(1, position.getY());
         Assert.assertEquals(Orientation.SOUTH, position.getOrientation());
+
+
+        position = reader.readPosition("10 1 w");
+        Assert.assertNotNull(position);
+        Assert.assertEquals(10, position.getX());
+        Assert.assertEquals(1, position.getY());
+        Assert.assertEquals(Orientation.WEST, position.getOrientation());
     }
 
     @Test
