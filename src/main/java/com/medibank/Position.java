@@ -2,7 +2,7 @@ package com.medibank;
 
 /**
  * This class represents a trainee's position
- *
+ * <p>
  * Created by zhaoyi0113 on 25/10/2016.
  */
 public class Position {

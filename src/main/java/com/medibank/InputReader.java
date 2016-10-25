@@ -117,6 +117,9 @@ public class InputReader {
         Position position = null;
         if (line != null) {
             position = readPosition(line);
+            if (position.getX() > maxX || position.getY() > maxY) {
+                position = null;
+            }
         }
         line = bReader.readLine();
         List<Movement> movements = null;

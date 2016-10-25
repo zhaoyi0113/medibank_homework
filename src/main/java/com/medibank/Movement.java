@@ -51,7 +51,7 @@ public class Movement {
         int y = position.getY();
         switch (position.getOrientation()) {
             case EAST:
-                if(x<maxX) {
+                if (x < maxX) {
                     x++;
                 }
                 break;
@@ -66,7 +66,7 @@ public class Movement {
                 }
                 break;
             case NORTH:
-                if(y<maxY) {
+                if (y < maxY) {
                     y++;
                 }
                 break;

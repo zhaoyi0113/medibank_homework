@@ -35,9 +35,9 @@ public enum Orientation {
         return values()[(this.ordinal() + 1) % values().length];
     }
 
-    public Orientation previous(){
-        if(this.ordinal() == 0){
-            return values()[values().length-1];
+    public Orientation previous() {
+        if (this.ordinal() == 0) {
+            return values()[values().length - 1];
         }
         return values()[(this.ordinal() - 1) % values().length];
     }

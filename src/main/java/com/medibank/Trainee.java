@@ -1,7 +1,6 @@
 package com.medibank;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,8 +21,8 @@ public class Trainee {
         this.maxY = maxY;
     }
 
-    public void calibrate(){
-        for(Movement movement : movements){
+    public void calibrate() {
+        for (Movement movement : movements) {
             position = movement.move(position, maxX, maxY);
         }
     }

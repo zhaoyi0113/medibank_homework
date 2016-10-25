@@ -53,10 +53,14 @@ public class MovementTest {
         newPosition = movement.move(new Position(1, 1, Orientation.NORTH), 3, 3);
         Assert.assertNotNull(newPosition);
         Assert.assertEquals(2, newPosition.getY());
+
+        newPosition = movement.move(new Position(3, 2, Orientation.NORTH), 3, 3);
+        Assert.assertNotNull(newPosition);
+        Assert.assertEquals(3, newPosition.getY());
     }
 
     @Test
-    public void test_move_forward_block_cases(){
+    public void test_move_forward_block_cases() {
         Movement movement = new Movement("M");
         Position newPosition = movement.move(new Position(1, 1, Orientation.EAST), 1, 1);
         Assert.assertNotNull(newPosition);

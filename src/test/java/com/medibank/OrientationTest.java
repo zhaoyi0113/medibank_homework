@@ -19,7 +19,7 @@ public class OrientationTest {
     }
 
     @Test
-    public void test_orientation_previous(){
+    public void test_orientation_previous() {
         Assert.assertEquals(Orientation.NORTH, Orientation.EAST.previous());
         Assert.assertEquals(Orientation.EAST, Orientation.SOUTH.previous());
         Assert.assertEquals(Orientation.SOUTH, Orientation.WEST.previous());

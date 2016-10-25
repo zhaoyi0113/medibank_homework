@@ -114,4 +114,11 @@ public class InputReaderTest {
 
     }
 
+    @Test
+    public void test_create_trainee_outof_range() {
+        InputReader reader = new InputReader();
+        List<Trainee> trainees = reader.createTrainees(getClass().getResourceAsStream("error_data1.txt"));
+        Assert.assertEquals(0, trainees.size());
+    }
+
 }
