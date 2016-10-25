@@ -117,7 +117,7 @@ public class InputReader {
         Position position = null;
         if (line != null) {
             position = readPosition(line);
-            if (position.getX() > maxX || position.getY() > maxY) {
+            if (position != null && (position.getX() > maxX || position.getY() > maxY)) {
                 position = null;
             }
         }

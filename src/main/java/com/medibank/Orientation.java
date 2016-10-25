@@ -31,10 +31,19 @@ public enum Orientation {
         throw new IllegalArgumentException("Invalid enum value " + value);
     }
 
+    /**
+     * get the next orientation when turn right
+     *
+     * @return
+     */
     public Orientation next() {
         return values()[(this.ordinal() + 1) % values().length];
     }
 
+    /**
+     * get the next orientation when turn left
+     * @return
+     */
     public Orientation previous() {
         if (this.ordinal() == 0) {
             return values()[values().length - 1];

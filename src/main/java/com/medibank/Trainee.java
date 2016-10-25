@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Trainee is an object representing the initial position with a series of movements
+ *
  * Created by zhaoyi0113 on 25/10/2016.
  */
 public class Trainee {
